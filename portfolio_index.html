@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WANGMY | Portfolio</title>
+  <meta name="description" content="Researcher & designer blending sensors, digital twins, machine learning, and computer vision for smarter, safer sports." />
+  <style>
+    :root{
+      --bg:#f8fafc;--card:#ffffff;--text:#1f2937;--muted:#6b7280;--primary:#2563eb;--ring:rgba(37,99,235,.25)
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--primary);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1024px;margin:0 auto;padding:24px}
+    header.hero{background:linear-gradient(120deg,#89f7fe,#66a6ff);color:#fff;border-bottom:1px solid rgba(255,255,255,.2)}
+    header .wrap{max-width:1024px;margin:0 auto;padding:56px 24px}
+    .title{font-size:clamp(28px,5vw,40px);margin:0 0 8px;font-weight:800;letter-spacing:.2px}
+    .subtitle{margin:0;font-size:clamp(16px,3.2vw,20px);opacity:.95}
+    .slogans{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+    .pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(4px);padding:8px 12px;border-radius:999px;font-size:14px}
+
+    nav{position:sticky;top:0;background:#ffffffd9;backdrop-filter:blur(6px);border-bottom:1px solid #e5e7eb;z-index:10}
+    nav .navwrap{max-width:1024px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:10px 24px}
+    .brand{font-weight:800;letter-spacing:.3px}
+    .menu{display:flex;gap:16px}
+    .menu a{color:#111827;padding:8px 10px;border-radius:8px}
+    .menu a:hover{background:#f3f4f6}
+
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+    .card{background:var(--card);border:1px solid #e5e7eb;border-radius:16px;box-shadow:0 6px 22px rgba(0,0,0,.05);padding:20px}
+    .card:hover{box-shadow:0 10px 28px rgba(0,0,0,.08)}
+    .card h3{margin:0 0 8px}
+    .muted{color:var(--muted)}
+
+    .about{grid-column:span 12}
+    .about-inner{display:grid;grid-template-columns:140px 1fr;gap:20px;align-items:start}
+    .avatar{width:140px;height:140px;border-radius:16px;object-fit:cover;border:3px solid #fff;box-shadow:0 8px 22px rgba(37,99,235,.18)}
+    .info-list{display:grid;gap:6px;font-size:14px}
+    .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .badge{background:#eef2ff;border:1px solid #e0e7ff;color:#3730a3;border-radius:999px;padding:4px 10px;font-size:12px}
+
+    .hobbies{grid-column:span 12}
+    .hobgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+    .hob{display:flex;gap:12px;align-items:center;padding:14px;border:1px dashed #e5e7eb;border-radius:14px;background:#fafbff}
+    .hob .emoji{font-size:22px}
+
+    .research{grid-column:span 12}
+    .project{display:grid;grid-template-columns:220px 1fr;gap:16px;align-items:start;padding:16px;border:1px solid #e5e7eb;border-radius:14px;margin-bottom:14px}
+    .cover{width:100%;height:140px;object-fit:cover;border-radius:10px;border:1px solid #d1d5db}
+    .tag{display:inline-block;background:#ecfeff;border:1px solid #cffafe;color:#155e75;border-radius:999px;padding:3px 8px;font-size:12px;margin-right:6px}
+
+    section{margin:28px 0}
+    section h2{margin:0 0 12px;font-size:22px}
+
+    footer{margin:40px 0 24px;color:var(--muted);text-align:center}
+    .small{font-size:13px}
+
+    @media (max-width:700px){
+      .about-inner{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <h1 class="title">WANG MY</h1>
+      <p class="subtitle">Blending sensors, digital twins, machine learning, and computer vision to make sports training smarter and safer.</p>
+      <div class="slogans">
+        <span class="pill">Design the Future.</span>
+        <span class="pill">Where Sports Meets Technology.</span>
+        <span class="pill">Train Smarter. Play Safer.</span>
+        <span class="pill">Don't let passion hurt us.</span>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="navwrap">
+      <div class="brand">wangmy</div>
+      <div class="menu">
+        <a href="#about">About</a>
+        <a href="#hobbies">Hobbies</a>
+        <a href="#research">Research</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="grid">
+
+      <!-- About / Resume -->
+      <section id="about" class="about card">
+        <h2>About Me</h2>
+        <div class="about-inner">
+          <img class="avatar" src="/assets/me.jpg" alt="Your portrait" />
+          <div>
+            <p>
+              I am a researcher and designer passionate about human movement, sports technology, and creative problem solving. I integrate
+              <strong>sensor algorithms</strong>, <strong>digital twin modeling</strong>, <strong>machine learning</strong>, and <strong>computer vision</strong>
+              to help people train and compete more safely and effectively.
+            </p>
+            <div class="info-list">
+              <div><strong>Current:</strong> M.S. Student, Department of Mechanical Engineering, <em>The University of Tokyo</em> — supervised by <strong>Lecturer Vincent Hernandez</strong>.</div>
+              <div><strong>B.S.:</strong> School of Mechanical Engineering, <em>Dalian University of Technology</em> — supervised by <strong>Prof. Liming Shu</strong>.</div>
+              <div><strong>Exchange:</strong> Dept. of Mechanical Engineering, <em>Tokyo Institute of Technology</em> (now <em>Tokyo Science University</em>) — Okada & Hijikata Lab, supervised by <strong>Assoc. Prof. Wataru Hijikata</strong>.</div>
+              <div class="badges">
+                <span class="badge">Sensors</span>
+                <span class="badge">Digital Twin</span>
+                <span class="badge">IMU / Biomechanics</span>
+                <span class="badge">ML & CV</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Hobbies -->
+      <section id="hobbies" class="hobbies card">
+        <h2>Hobbies</h2>
+        <div class="hobgrid">
+          <div class="hob"><div class="emoji">⚽</div><div><strong>Ball Games</strong><div class="muted small">Tactics, pickup games, and sports analytics.</div></div></div>
+          <div class="hob"><div class="emoji">🏋️</div><div><strong>Fitness</strong><div class="muted small">Strength, mobility, and injury prevention.</div></div></div>
+          <div class="hob"><div class="emoji">🎸</div><div><strong>Guitar</strong><div class="muted small">Fingerstyle and ambient tones.</div></div></div>
+          <div class="hob"><div class="emoji">📷</div><div><strong>Photography</strong><div class="muted small">People, motion, and city light.</div></div></div>
+        </div>
+      </section>
+
+      <!-- Research -->
+      <section id="research" class="research card">
+        <h2>Research Experience</h2>
+
+        <article class="project">
+          <div>
+            <img class="cover" src="/assets/projects/imu-knee.jpg" alt="IMU Knee Project" />
+          </div>
+          <div>
+            <h3>Wearable IMU-Based Digital Twin for Assessing Knee Biomechanics in Varus/Valgus Gait</h3>
+            <div class="muted small">Affiliation: Dalian University of Technology (SHU lab)</div>
+            <div style="margin:8px 0;">
+              <span class="tag">IMU</span>
+              <span class="tag">Digital Twin</span>
+              <span class="tag">Biomechanics</span>
+            </div>
+            <p><em>Using Xsens-IMU and OpenSim-Opensense to make a digital twin for joint varus and valgus patients knee joint angle estimation before and after surgery.</em></p>
+          </div>
+        </article>
+
+        <article class="project">
+          <div>
+            <img class="cover" src="/assets/projects/muscle-fatigue.jpg" alt="Muscle Fatigue Project" />
+          </div>
+          <div>
+            <h3>Skeletal Muscle Contraction Control via Inverse Model Considering Muscle Fatigue</h3>
+            <div class="muted small">Affiliation: Tokyo Institute of Technology (Okada & Hijikata Lab)</div>
+            <div style="margin:8px 0;">
+              <span class="tag">Control</span>
+              <span class="tag">Muscle Fatigue</span>
+              <span class="tag">Inverse Modeling</span>
+            </div>
+            <p><em>Using muscle contraction inverse model to design a realtime electrical stimulation in order to let muscle generate target force continuously.</em></p>
+          </div>
+        </article>
+
+        <article class="project">
+          <div>
+            <img class="cover" src="/assets/projects/fatigue-recovery.jpg" alt="Fatigue Recovery Project" />
+          </div>
+          <div>
+            <h3>Data-Driven Prediction of Fatigue & Recovery to Optimize Rest Using Multi-point RGB Motion Data</h3>
+            <div class="muted small">Affiliation: The University of Tokyo (GV lab)</div>
+            <div style="margin:8px 0;">
+              <span class="tag">Computer Vision</span>
+              <span class="tag">Time-Series ML</span>
+              <span class="tag">Sports Science</span>
+            </div>
+            <p><em>Using machine learning and computer vision to acknowledge patients fatigue level and recovery time in realtime.</em></p>
+          </div>
+        </article>
+
+      </section>
+
+      <!-- Contact / Info (full width card) -->
+      <section id="contact" class="card" style="grid-column:span 12;">
+        <h2>Contact</h2>
+        <p class="muted">Feel free to reach out for collaborations, internships, or research discussions.</p>
+
+        <p><strong>Email:</strong>
+          <a href="mailto:mingyangwang0815@outlook.com">MingyangWang0815@outlook.com</a>
+        </p>
+        <p><strong>GitHub:</strong>
+          <a href="https://github.com/AWANGMY" target="_blank" rel="noopener">github.com/AWANGMY</a>
+        </p>
+        <p><strong>Location:</strong> Tokyo, Japan</p>
+      </section>
+
+    </div>
+
+    <footer>
+      <div class="small">© 2025 WANG MY — Built on GitHub Pages</div>
+    </footer>
+  </main>
+</body>
+</html>
