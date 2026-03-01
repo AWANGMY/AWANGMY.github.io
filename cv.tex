@@ -1,0 +1,127 @@
+% !TEX program = xelatex
+\documentclass[11pt,a4paper]{article}
+
+% ---------- Packages ----------
+\usepackage[a4paper,margin=1.65cm]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fontawesome5}
+\usepackage{fontspec}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\setmainfont{Times New Roman}
+
+% ---------- Style ----------
+\pagenumbering{gobble}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt}
+\setlist[itemize]{leftmargin=1.2em,itemsep=0.5pt,topsep=1pt,parsep=0pt,partopsep=0pt}
+\definecolor{Accent}{HTML}{0E3A5D}
+\definecolor{SoftGray}{HTML}{666666}
+
+\titleformat{\section}
+  {\large\bfseries\color{Accent}}{}
+  {0pt}{}
+  [\vspace{-4pt}\titlerule\vspace{2pt}]
+\titlespacing*{\section}{0pt}{7pt}{3pt}
+
+\newcommand{\cvitem}[2]{\textbf{#1}: #2}
+\newcommand{\contactsep}{\hspace{0.35em}{\color{SoftGray}\textbar}\hspace{0.35em}}
+
+\newcommand{\cventry}[4]{%
+  \textbf{#1}\hfill \textbf{#2}\\
+  \textit{#3}\hfill \textit{#4}\\[-4pt]
+}
+
+\newcommand{\cvproject}[4]{%
+  \textbf{#1}\hfill \textbf{#2}\\
+  \textit{#3}\hfill \textit{#4}\\[-6pt]
+}
+
+\begin{document}
+
+% ---------- Header ----------
+\begin{minipage}[c]{0.74\textwidth}
+{\fontsize{24}{26}\selectfont\textbf{WANG MINGYANG}}\\[-1pt]
+\small
+
+{\color{SoftGray}Tokyo, Japan}
+\contactsep \faPhone\ \href{tel:07065219182}{070-6521-9182}
+\contactsep \faEnvelope\ \href{mailto:wangmingyang_career@outlook.com}{wangmingyang\_career@outlook.com}\\[-1pt]
+\faGithub\ \href{https://github.com/AWANGMY}{github.com/AWANGMY}
+\contactsep \textbf{Research Field:} AI / Sport Science / Biomechanics
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.23\textwidth}
+\raggedleft
+\IfFileExists{WANG(black).jpg}{\includegraphics[width=2.2cm]{WANG(black).jpg}}{}
+\end{minipage}
+
+
+% ---------- Education ----------
+\section*{EDUCATION}
+
+{\setlength{\parskip}{1pt}
+\cventry
+{Dalian University of Technology}{Dalian, China}
+{B.Eng. in Mechanical Engineering}{09.2020 -- 06.2025}
+{\small \textbf{GPA:} 3.55/4.0 \contactsep \textbf{Award:} Excellent Graduation Thesis}\\[-2pt]
+\vspace{-3pt}
+
+\cventry
+{Tokyo Institute of Technology}{Tokyo, Japan}
+{Young Scientists Exchange Program (YSEP), Department of Mechanical Engineering}{10.2023 -- 08.2024}
+\vspace{-3pt}
+
+\cventry
+{University of Tokyo}{Tokyo, Japan}
+{Master Student, Graduate School of Engineering}{10.2025 -- Present}
+}
+
+% ---------- Experience ----------
+\section*{EXPERIENCE}
+
+\cvproject
+{A Wearable Sensor Based Musculoskeletal Digital Twin System}{Dalian, China}
+{Dalian University of Technology}{09.2024 -- 06.2025}
+
+\begin{itemize}
+  \item Proposed a musculoskeletal digital twin modeling method integrating wearable IMU sensors with the OpenSim platform for pre-TKA gait evaluation.
+  \item Collected gait data with Vicon optical motion capture and wearable IMU, and obtained ground reaction force data from a Bertec instrumented treadmill.
+  \item Reconstructed 3D knee joint angles, joint moments, and major muscle forces across three anatomical planes via model scaling, inverse kinematics, and inverse dynamics.
+  \item Comparative experiments showed high consistency of IMU with optical motion capture, with stronger flexibility in occluded or space-constrained environments.
+\end{itemize}
+
+\cvproject
+{Skeletal Muscle Contraction Control Utilizing Inverse Models Considering Muscle Fatigue}{Tokyo, Japan}
+{Tokyo Institute of Technology}{10.2023 -- 08.2024}
+
+\begin{itemize}
+  \item Simulated the stimulation voltage required to generate target muscle force using a muscle contraction inverse model.
+  \item Incorporated muscle fatigue into simulation calculations to estimate stimulation voltage required to sustain muscle force over long durations.
+  \item Conducted electrical stimulation experiments on frog thigh muscle to validate the simulation results.
+\end{itemize}
+
+\cvproject
+{Human Fatigue Prediction with Multi RGB-D Motion Analysis}{Tokyo, Japan}
+{University of Tokyo}{10.2025 -- Present}
+
+\begin{itemize}
+  \item Built a multi-camera RGB-D pipeline for human keypoint extraction, synchronization, and 3D trajectory reconstruction.
+  \item Implemented motion filtering modules, including adaptive Kalman filtering and temporal denoising, to improve signal stability.
+  \item Engineered movement features and trained machine-learning models to predict fatigue level during human motion tasks.
+  \item Developed reproducible workflows for dataset management, model evaluation, and result visualization in Python.
+\end{itemize}
+
+% ---------- Skills ----------
+\section*{SKILLS}
+
+\cvitem{Programming}{Python, MATLAB, C}\\
+\cvitem{Computer Vision \& ML}{Multi-camera RGB-D processing, keypoint extraction, Kalman filtering, scikit-learn}\\
+\cvitem{Engineering Tools}{OpenSim, Inventor}\\
+\cvitem{Languages}{Chinese (Native), English (TOEFL 97), Japanese (JLPT N1)}\\
+\cvitem{Activities}{University Imaging Studio member; Career Planning and Employment Association member; Overseas Exchange Student Ambassador}\\
+\cvitem{Interests}{Soccer, basketball, table tennis, photography, cooking}
+
+\end{document}
