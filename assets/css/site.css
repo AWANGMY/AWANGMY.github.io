@@ -241,8 +241,6 @@ img { display: block; max-width: 100%; }
 }
 .hero h1 { max-width: 780px; font-size: clamp(60px, 7.6vw, 118px); }
 .hero h1 em { color: var(--accent); font-weight: 500; }
-.madridista-chip { display: inline-flex; align-items: center; gap: 7px; padding: 5px 10px; border: 1px solid rgba(229,196,106,.5); border-radius: 999px; color: var(--madrid-white); background: rgba(40,100,220,.16); }
-.madridista-chip i { width: 7px; height: 7px; border: 2px solid var(--madrid-gold); border-radius: 50%; box-shadow: 0 0 0 2px rgba(246,243,234,.12); }
 .hero-lede {
   max-width: 650px;
   margin: 30px 0 0;
