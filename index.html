@@ -21,7 +21,6 @@
     <div class="stage-fallback">
       <img src="./assets/me.jpg" alt="">
     </div>
-    <div class="stage-note"><span></span> scroll-linked 3D</div>
   </div>
 
   <header class="site-header" id="site-header">
@@ -33,10 +32,10 @@
       <span></span><span></span><span></span><span class="sr-only">Open navigation</span>
     </button>
     <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
-      <a href="#system">Approach</a>
-      <a href="#work">Research</a>
-      <a href="#journey">Journey</a>
-      <a href="#beyond">Beyond</a>
+      <a href="#about">About</a>
+      <a href="#work">Projects</a>
+      <a href="#journey">Background</a>
+      <a href="#beyond">Outside work</a>
       <a class="nav-contact" href="#contact">Contact</a>
     </nav>
   </header>
@@ -45,57 +44,43 @@
     <section id="hero" class="chapter hero" data-scene="hero" data-accent="#f6f3ea">
       <div class="chapter-inner hero-inner">
         <div class="hero-copy reveal">
-          <div class="eyebrow"><span>Sports technology · Tokyo</span><span class="madridista-chip"><i aria-hidden="true"></i> Madridista</span></div>
-          <h1>I turn human motion into <em>actionable insight.</em></h1>
-          <p class="hero-lede">Mechanical engineer and researcher combining multi-view vision, wearable sensing, digital twins, and machine learning to make training smarter and safer.</p>
+          <div class="eyebrow"><span>Mingyang Wang · 王明阳</span><span class="madridista-chip"><i aria-hidden="true"></i> Madridista</span></div>
+          <h1>Hi, I’m Mingyang.</h1>
+          <p class="hero-lede">I’m a mechanical engineering master’s student at the University of Tokyo. I study human movement with computer vision, wearable sensors, biomechanics, and machine learning.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#work">Explore my work <span aria-hidden="true">↘</span></a>
+            <a class="button button-primary" href="#work">See my projects <span aria-hidden="true">↓</span></a>
             <a class="button button-secondary" href="https://github.com/AWANGMY" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
           </div>
           <div class="hero-meta" aria-label="Current status">
-            <div><strong>Now</strong><span>M.S. Mechanical Engineering<br>The University of Tokyo</span></div>
-            <div><strong>Focus</strong><span>Vision · Sensors · Biomechanics · ML</span></div>
+            <div><strong>Based in</strong><span>Tokyo, Japan</span></div>
+            <div><strong>Current work</strong><span>Multimodal fatigue prediction</span></div>
           </div>
         </div>
-        <div class="hero-stage-label reveal" aria-hidden="true">
-          <span class="number">01</span>
-          <span>Move your pointer.<br>Then scroll to explore.</span>
-        </div>
-      </div>
-      <div class="hero-marquee" aria-hidden="true">
-        <div>COMPUTER VISION · WEARABLE SENSING · DIGITAL TWINS · HUMAN PERFORMANCE · </div>
-        <div>COMPUTER VISION · WEARABLE SENSING · DIGITAL TWINS · HUMAN PERFORMANCE · </div>
       </div>
     </section>
 
-    <section id="system" class="chapter system" data-scene="system" data-accent="#2864dc">
+    <section id="about" class="chapter system" data-scene="system" data-accent="#2864dc">
       <div class="chapter-inner">
         <div class="section-copy reveal">
-          <div class="section-kicker"><span>02</span> My approach</div>
-          <h2>From noisy signals to better decisions.</h2>
-          <p>My work connects the full research chain rather than treating sensing, modeling, and interpretation as separate problems.</p>
+          <div class="section-kicker"><span>01</span> About me</div>
+          <h2>I want to understand what movement tells us about people.</h2>
+          <p>My current research asks whether everyday video and physiological signals can estimate fatigue without interrupting training or recovery.</p>
         </div>
-        <div class="signal-flow" aria-label="Research approach from sensing to action">
-          <article class="flow-step reveal" data-step="sense">
-            <div class="flow-index">01</div>
-            <div class="flow-orbit"><i></i><i></i><i></i></div>
-            <h3>Sense</h3>
-            <p>Multi-view RGB, physiological signals, IMUs, motion capture, and force data.</p>
-            <span>Acquire · Synchronize</span>
+        <div class="about-grid">
+          <article class="about-card reveal">
+            <span>Research question</span>
+            <h3>How does fatigue change the way we move?</h3>
+            <p>I combine motion trajectories with physiological data to study fatigue and recovery over time.</p>
           </article>
-          <article class="flow-step reveal" data-step="model">
-            <div class="flow-index">02</div>
-            <div class="flow-wave" aria-hidden="true"><b></b><b></b><b></b><b></b><b></b><b></b></div>
-            <h3>Model</h3>
-            <p>3D reconstruction, OpenSim, temporal networks, filtering, and multimodal learning.</p>
-            <span>Reconstruct · Learn</span>
+          <article class="about-card reveal">
+            <span>Tools I use</span>
+            <h3>Video, sensors, and biomechanical models.</h3>
+            <p>Python, PyTorch, OpenSim, Xsens, MATLAB, time-series analysis, and 3D reconstruction.</p>
           </article>
-          <article class="flow-step reveal" data-step="decide">
-            <div class="flow-index">03</div>
-            <div class="flow-target" aria-hidden="true"><i></i><i></i><i></i></div>
-            <h3>Decide</h3>
-            <p>Translate motion into fatigue, gait, exercise, and recovery indicators people can act on.</p>
-            <span>Explain · Improve</span>
+          <article class="about-card reveal">
+            <span>What matters to me</span>
+            <h3>Useful results, not just accurate models.</h3>
+            <p>I care about careful validation, readable code, and results that make sense outside a benchmark.</p>
           </article>
         </div>
       </div>
@@ -105,17 +90,10 @@
       <div class="chapter-inner wide">
         <div class="section-heading reveal">
           <div>
-            <div class="section-kicker"><span>03</span> Selected work</div>
-            <h2>Research built to move.</h2>
+            <div class="section-kicker"><span>02</span> Selected projects</div>
+            <h2>Selected work.</h2>
           </div>
-          <p>Five projects across computer vision, biomechanics, control, and machine learning. Hover or focus a card to see its signal come alive.</p>
-        </div>
-
-        <div class="project-filters reveal" role="toolbar" aria-label="Filter research projects">
-          <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">All</button>
-          <button class="filter-button" type="button" data-filter="vision" aria-pressed="false">Vision + ML</button>
-          <button class="filter-button" type="button" data-filter="biomechanics" aria-pressed="false">Biomechanics</button>
-          <button class="filter-button" type="button" data-filter="control" aria-pressed="false">Control</button>
+          <p>Five projects across computer vision, biomechanics, control, and sports data.</p>
         </div>
 
         <div class="project-grid" id="project-grid">
@@ -126,9 +104,9 @@
               <div class="media-label">Ongoing · The University of Tokyo</div>
             </div>
             <div class="project-body">
-              <div class="project-topline"><span>01 / Multimodal vision</span><span class="status-dot">Live research</span></div>
+              <div class="project-topline"><span>Current research · UTokyo</span><span class="status-dot">In progress</span></div>
               <h3>Fatigue prediction from multi-view RGB and physiological signals</h3>
-              <p>A synchronized pipeline for keypoint extraction, 3D trajectory reconstruction, temporal denoising, and multimodal fatigue classification and regression.</p>
+              <p>I’m building a synchronized pipeline that reconstructs 3D motion from several cameras, cleans the trajectories, and combines them with physiological signals to estimate fatigue and recovery.</p>
               <div class="project-tags"><span>Multi-view RGB</span><span>3D trajectories</span><span>Time-series ML</span></div>
             </div>
           </article>
@@ -139,9 +117,9 @@
               <canvas class="project-viz" data-viz="gait" aria-hidden="true"></canvas>
             </div>
             <div class="project-body">
-              <div class="project-topline"><span>02 / Digital twin</span><span>Completed</span></div>
+              <div class="project-topline"><span>Graduation research</span><span>Open source</span></div>
               <h3>Wearable IMU and musculoskeletal modeling for knee gait analysis</h3>
-              <p>Custom calibration and an OpenSim/OpenSense workflow for 3-DOF knee kinematics, moments, and muscle forces across normal, varus, and valgus gait.</p>
+              <p>I built a custom calibration and OpenSim/OpenSense workflow to compare knee movement, moments, and muscle forces across three gait conditions.</p>
               <div class="project-metrics"><div><strong>3</strong><span>gait conditions</span></div><div><strong>&gt;0.90</strong><span>correlation</span></div><div><strong>5.8°</strong><span>approx. RMSE</span></div></div>
               <a class="project-link" href="https://github.com/AWANGMY/Human-motion-tracking-based-on-Opensim-and-Xsens-MTmanager" target="_blank" rel="noopener">Repository <span>↗</span></a>
             </div>
@@ -154,9 +132,9 @@
               <div class="metric-rings" aria-hidden="true"><i></i><i></i><i></i></div>
             </div>
             <div class="project-body">
-              <div class="project-topline"><span>03 / Action recognition</span><span>Open source</span></div>
+              <div class="project-topline"><span>Course project</span><span>Open source</span></div>
               <h3>Fit3D exercise classification</h3>
-              <p>A lightweight TCN with supervised contrastive learning for 27 skeleton-based fitness actions.</p>
+              <p>A lightweight temporal model with supervised contrastive learning for 27 skeleton-based fitness actions.</p>
               <div class="project-metrics"><div><strong>27</strong><span>actions</span></div><div><strong>950K</strong><span>parameters</span></div><div><strong>86.51</strong><span>macro F1</span></div></div>
               <a class="project-link" href="https://github.com/AWANGMY/Fit3D-based-Exercise-Classification" target="_blank" rel="noopener">Repository <span>↗</span></a>
             </div>
@@ -169,23 +147,23 @@
               <span class="trajectory t1"></span><span class="trajectory t2"></span>
             </div>
             <div class="project-body">
-              <div class="project-topline"><span>04 / Sports prediction</span><span>Open source</span></div>
+              <div class="project-topline"><span>Personal project</span><span>Open source</span></div>
               <h3>Billiards break-shot classification</h3>
-              <p>Reproducing and comparing BLFormer, BLCNN, MLP, and Transformer models for clear, win, and potted-ball outcomes.</p>
+              <p>I reproduced and compared four model families for predicting clear, win, and potted-ball outcomes.</p>
               <div class="project-metrics"><div><strong>1,940</strong><span>layouts</span></div><div><strong>4</strong><span>model families</span></div><div><strong>3</strong><span>prediction tasks</span></div></div>
               <a class="project-link" href="https://github.com/AWANGMY/Billiards_Prediction" target="_blank" rel="noopener">Repository <span>↗</span></a>
             </div>
           </article>
 
-          <article class="project-card project-wide reveal" data-category="control" data-project="muscle" tabindex="0">
-            <div class="project-media muscle-media">
+          <article class="project-card reveal" data-category="control" data-project="muscle" tabindex="0">
+            <div class="project-media compact muscle-media">
               <img src="./assets/projects/muscle-fatigue.jpg" alt="Muscle contraction force control experiment and model output">
               <div class="pulse-trace" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             </div>
             <div class="project-body">
-              <div class="project-topline"><span>05 / Bio-control</span><span>Tokyo Institute of Technology</span></div>
+              <div class="project-topline"><span>Exchange research · Tokyo Tech</span><span>2024</span></div>
               <h3>Inverse modeling of muscle contraction with fatigue effects</h3>
-              <p>Estimating electrical stimulation voltage required to sustain target force, then validating simulation behavior against frog thigh muscle experiments.</p>
+              <p>I modeled the stimulation voltage needed to maintain a target force and compared the simulation with muscle experiments.</p>
               <div class="project-tags"><span>Inverse model</span><span>MATLAB</span><span>Electrical stimulation</span><span>Experimental validation</span></div>
             </div>
           </article>
@@ -196,9 +174,9 @@
     <section id="journey" class="chapter journey" data-scene="journey" data-accent="#8467aa">
       <div class="chapter-inner">
         <div class="section-copy reveal">
-          <div class="section-kicker"><span>04</span> Journey</div>
-          <h2>Engineering across disciplines and cities.</h2>
-          <p>Mechanical engineering is the base; computer vision, data, and human movement are the connective tissue.</p>
+          <div class="section-kicker"><span>03</span> Background</div>
+          <h2>Mechanical engineering brought me to human movement.</h2>
+          <p>I started with mechanics in Dalian, spent a year at Tokyo Tech, and now study sports technology at the University of Tokyo.</p>
         </div>
 
         <div class="timeline">
@@ -219,32 +197,23 @@
           </article>
         </div>
 
-        <div class="industry-note reveal">
-          <div><span>Industry direction</span><h3>Research that crosses into products.</h3></div>
-          <p>Selected internship offers span healthcare engineering, data science, and automated-driving localization at M3, Finatext / Nowcast, and Bosch Japan.</p>
-        </div>
       </div>
     </section>
 
     <section id="beyond" class="chapter beyond" data-scene="beyond" data-accent="#e5c46a">
       <div class="chapter-inner wide">
         <div class="section-heading reveal">
-          <div><div class="section-kicker"><span>05</span> Beyond the lab</div><h2>Movement is personal, too.</h2></div>
-          <p>I learn from sport, observation, sound, and the city—not only from datasets.</p>
+          <div><div class="section-kicker"><span>04</span> Outside work</div><h2>A few things I enjoy.</h2></div>
+          <p>Football, billiards, photography, guitar, cooking, and finding small details around Tokyo.</p>
         </div>
         <div class="life-grid">
-          <figure class="life-portrait reveal">
-            <img src="./assets/me.jpg" alt="Original cartoon portrait of Mingyang Wang holding a cat">
-            <figcaption><span>Original avatar</span><strong>The reference behind the 3D character.</strong></figcaption>
-          </figure>
           <article class="life-card life-sport athlete-card reveal">
             <img class="athlete-card-image" src="./assets/life/madridista-player-cutout.png" alt="Cutout illustration of a footballer in a white number 10 shirt taking a shot">
             <div class="athlete-card-shade" aria-hidden="true"></div>
             <div class="athlete-card-topline"><span>Player card · Madridista</span><strong>10</strong></div>
             <div class="athlete-card-copy">
-              <span>Football / Movement vision</span>
-              <h3>Midfield mindset.</h3>
-              <p>Inspired by Luka Modrić: scan early, understand space, and make the next action count.</p>
+              <span>Football</span>
+              <h3>Madridista.</h3>
               <div class="athlete-card-stats" aria-label="Player card attributes">
                 <div><strong>VIS</strong><span>Vision</span></div>
                 <div><strong>CTL</strong><span>Control</span></div>
@@ -252,9 +221,10 @@
               </div>
             </div>
           </article>
-          <article class="life-card life-camera reveal"><span>02</span><h3>Photography</h3><p>People, motion, and city light—frames that train attention.</p><div class="camera-frame" aria-hidden="true"><i></i></div></article>
-          <article class="life-card life-sound reveal"><span>03</span><h3>Guitar</h3><p>Fingerstyle, rhythm, and a slower feedback loop.</p><div class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
-          <article class="life-card life-food reveal"><span>04</span><h3>Cooking</h3><p>Another system of timing, sensing, adjustment, and care.</p><div class="steam" aria-hidden="true"><i></i><i></i><i></i></div></article>
+          <article class="life-card life-camera reveal"><span>02</span><h3>Photography</h3><p>People, movement, and city light.</p><div class="camera-frame" aria-hidden="true"><i></i></div></article>
+          <article class="life-card life-billiards reveal"><span>03</span><h3>Billiards</h3><p>Playing, watching, and modeling shots.</p><div class="mini-pool" aria-hidden="true"><i></i><i></i><i></i></div></article>
+          <article class="life-card life-sound reveal"><span>04</span><h3>Guitar</h3><p>Mostly fingerstyle, played slowly.</p><div class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="life-card life-food reveal"><span>05</span><h3>Cooking</h3><p>Trying, tasting, and adjusting.</p><div class="steam" aria-hidden="true"><i></i><i></i><i></i></div></article>
         </div>
       </div>
     </section>
@@ -262,9 +232,9 @@
     <section id="contact" class="chapter contact" data-scene="contact" data-accent="#f6f3ea">
       <div class="chapter-inner contact-inner">
         <div class="contact-copy reveal">
-          <div class="section-kicker"><span>06</span> Contact</div>
-          <h2>Let’s build a healthier relationship with performance.</h2>
-          <p>I’m open to research collaborations, sports-technology projects, and conversations at the intersection of engineering and human movement.</p>
+          <div class="section-kicker"><span>05</span> Contact</div>
+          <h2>Say hello.</h2>
+          <p>If you’re working on human movement, sports technology, or an interesting data problem, I’d be happy to talk.</p>
           <a class="contact-email" href="mailto:wangmingyang_career@outlook.com">wangmingyang_career@outlook.com <span>↗</span></a>
         </div>
         <div class="contact-links reveal">
