@@ -302,20 +302,22 @@ function initAvatar() {
     });
 
     const materials = {
-      skin: makeMaterial(0xffd8c5),
-      blush: makeMaterial(0xf29a9c, { emissive: 0xe8757b, emissiveIntensity: .06 }),
-      hair: makeMaterial(0x493638),
-      hairLight: makeMaterial(0x74585b),
-      shirt: makeMaterial(0xaeddf0),
-      shirtDark: makeMaterial(0x397fa8),
+      skin: makeMaterial(0xf1c5a8),
+      skinShade: makeMaterial(0xdca88a),
+      blush: makeMaterial(0xe98f91, { emissive: 0xc86469, emissiveIntensity: .04 }),
+      hair: makeMaterial(0x282326),
+      hairLight: makeMaterial(0x46363a),
+      shirt: makeMaterial(0xb9dce9),
+      shirtDark: makeMaterial(0x3b88ac),
       gold: makeMaterial(0xe5c46a, { metalness: .12 }),
       dark: makeMaterial(0x211b24),
       white: makeMaterial(0xfffbf5),
-      iris: makeMaterial(0x5c405f, { emissive: 0x2a1830, emissiveIntensity: .12 }),
+      iris: makeMaterial(0x3d3032, { emissive: 0x241b1d, emissiveIntensity: .08 }),
       accent: makeMaterial(0x56f0c8, { emissive: 0x56f0c8, emissiveIntensity: .5, metalness: .12 }),
-      cat: makeMaterial(0xc8894f),
-      catLight: makeMaterial(0xf4d7ad),
-      catDark: makeMaterial(0x4b302f),
+      cat: makeMaterial(0xd99a53),
+      catLight: makeMaterial(0xf3dfbd),
+      catCream: makeMaterial(0xfff3da),
+      catDark: makeMaterial(0x543b3a),
       catPink: makeMaterial(0xe89a98),
       glass: makeMaterial(0x56f0c8, { emissive: 0x56f0c8, emissiveIntensity: .6, transparent: true, opacity: .42, metalness: .2 }),
     };
@@ -329,6 +331,11 @@ function initAvatar() {
       return object;
     };
 
+    const addTube = (parent, points, radius, material, segments = 24) => {
+      const curve = new THREE.CatmullRomCurve3(points.map(([x,y,z]) => new THREE.Vector3(x,y,z)));
+      return addMesh(parent, new THREE.TubeGeometry(curve, segments, radius, 10, false), material);
+    };
+
     const rig = new THREE.Group();
     scene.add(rig);
 
@@ -339,108 +346,111 @@ function initAvatar() {
     const innerRing = addMesh(portraitHalo, new THREE.TorusGeometry(1.66,.012,8,90), materials.glass, [0,0,.02]);
 
     const body = new THREE.Group();
-    body.position.y = -.12;
+    body.position.y = -.08;
     rig.add(body);
-    addMesh(body, new THREE.CapsuleGeometry(.76,.78,10,28), materials.shirt, [0,-1.18,0], [1.14,1,.73]);
-    addMesh(body, new THREE.CylinderGeometry(.78,.86,.13,36), materials.shirtDark, [0,-1.84,0]);
-    addMesh(body, new THREE.BoxGeometry(.76,.045,.035), materials.white, [0,-1.54,.61], [1,1,1], [0,0,-.07]);
-    addMesh(body, new THREE.BoxGeometry(.32,.024,.04), materials.gold, [.24,-1.49,.635], [1,1,1], [0,0,-.07]);
-    addMesh(body, new THREE.ConeGeometry(.23,.42,3), materials.white, [-.22,-.67,.65], [1,1,.55], [0,0,-.12]);
-    addMesh(body, new THREE.ConeGeometry(.23,.42,3), materials.white, [.22,-.67,.65], [1,1,.55], [0,0,.12]);
-    addMesh(body, new THREE.SphereGeometry(.04,12,8), materials.shirtDark, [0,-.92,.7], [1,1,.4]);
-    addMesh(body, new THREE.SphereGeometry(.04,12,8), materials.shirtDark, [0,-1.12,.7], [1,1,.4]);
+    addMesh(body, new THREE.CapsuleGeometry(.62,.66,10,28), materials.shirt, [0,-1.13,0], [1.18,1.03,.72]);
+    addMesh(body, new THREE.SphereGeometry(.66,32,22), materials.shirt, [0,-.72,.02], [1.2,.62,.73]);
+    addMesh(body, new THREE.CylinderGeometry(.68,.75,.12,36), materials.shirtDark, [0,-1.89,0]);
+    addMesh(body, new THREE.CylinderGeometry(.17,.19,.28,24), materials.skinShade, [0,-.24,-.02], [1,1,.9]);
+    addMesh(body, new THREE.ConeGeometry(.2,.38,3), materials.white, [-.2,-.49,.59], [1,1,.6], [0,0,-.12]);
+    addMesh(body, new THREE.ConeGeometry(.2,.38,3), materials.white, [.2,-.49,.59], [1,1,.6], [0,0,.12]);
+    addMesh(body, new THREE.SphereGeometry(.035,12,8), materials.shirtDark, [0,-.82,.69], [1,1,.4]);
+    addMesh(body, new THREE.SphereGeometry(.035,12,8), materials.shirtDark, [0,-1.04,.7], [1,1,.4]);
 
     const leftArm = new THREE.Group();
-    leftArm.position.set(-.78,-.78,.08);
-    leftArm.rotation.z = .67;
+    leftArm.position.set(-.62,-.58,.04);
     body.add(leftArm);
-    addMesh(leftArm, new THREE.CapsuleGeometry(.19,.65,7,18), materials.shirt, [0,-.4,.16], [1,1,.88]);
-    addMesh(leftArm, new THREE.CapsuleGeometry(.17,.38,7,18), materials.skin, [0,-.87,.48], [1,1,.9]);
-    addMesh(leftArm, new THREE.SphereGeometry(.2,22,16), materials.skin, [0,-1.16,.98], [1.05,.82,.86]);
+    addTube(leftArm, [[0,0,0],[-.14,-.17,.1],[-.24,-.36,.24]], .18, materials.shirt, 20);
+    addTube(leftArm, [[-.24,-.36,.24],[-.23,-.56,.47],[.08,-.75,.72]], .13, materials.skin, 20);
+    addMesh(leftArm, new THREE.SphereGeometry(.18,22,16), materials.skin, [.11,-.77,.79], [1.06,.76,.66], [0,0,-.28]);
 
     const rightArm = new THREE.Group();
-    rightArm.position.set(.78,-.78,.08);
-    rightArm.rotation.z = -.67;
+    rightArm.position.set(.62,-.58,.04);
     body.add(rightArm);
-    addMesh(rightArm, new THREE.CapsuleGeometry(.19,.65,7,18), materials.shirt, [0,-.4,.16], [1,1,.88]);
-    addMesh(rightArm, new THREE.CapsuleGeometry(.17,.38,7,18), materials.skin, [0,-.87,.48], [1,1,.9]);
-    const rightHand = addMesh(rightArm, new THREE.SphereGeometry(.2,22,16), materials.skin, [0,-1.16,.98], [1.05,.82,.86]);
+    addTube(rightArm, [[0,0,0],[.14,-.17,.1],[.24,-.36,.24]], .18, materials.shirt, 20);
+    addTube(rightArm, [[.24,-.36,.24],[.23,-.56,.47],[-.08,-.75,.72]], .13, materials.skin, 20);
+    const rightHand = addMesh(rightArm, new THREE.SphereGeometry(.18,22,16), materials.skin, [-.11,-.77,.79], [1.06,.76,.66], [0,0,.28]);
 
     const head = new THREE.Group();
-    head.position.set(0,.62,0);
+    head.position.set(0,.67,0);
     rig.add(head);
-    addMesh(head, new THREE.SphereGeometry(1.12,56,40), materials.skin, [0,.16,0], [1.04,1,.84]);
-    addMesh(head, new THREE.SphereGeometry(.14,22,16), materials.blush, [-.69,-.06,.87], [1.45,.52,.25]);
-    addMesh(head, new THREE.SphereGeometry(.14,22,16), materials.blush, [.69,-.06,.87], [1.45,.52,.25]);
+    addMesh(head, new THREE.SphereGeometry(.94,52,38), materials.skin, [0,.14,0], [1,1.05,.84]);
+    addMesh(head, new THREE.SphereGeometry(.12,20,14), materials.skinShade, [-.91,.14,-.01], [.65,1,.62]);
+    addMesh(head, new THREE.SphereGeometry(.12,20,14), materials.skinShade, [.91,.14,-.01], [.65,1,.62]);
+    addMesh(head, new THREE.SphereGeometry(.11,20,14), materials.blush, [-.58,-.07,.78], [1.25,.42,.2]);
+    addMesh(head, new THREE.SphereGeometry(.11,20,14), materials.blush, [.58,-.07,.78], [1.25,.42,.2]);
 
     const buildEye = (x) => {
       const eye = new THREE.Group();
-      eye.position.set(x,.22,.89);
+      eye.position.set(x,.22,.79);
       head.add(eye);
-      addMesh(eye, new THREE.SphereGeometry(.25,28,20), materials.white, [0,0,0], [1.12,.72,.28]);
-      addMesh(eye, new THREE.SphereGeometry(.145,24,16), materials.iris, [0,-.01,.115], [.86,1.08,.36]);
-      addMesh(eye, new THREE.SphereGeometry(.073,20,14), materials.dark, [0,-.015,.19], [.88,1.1,.35]);
-      addMesh(eye, new THREE.SphereGeometry(.037,14,10), materials.white, [-.035,.055,.225], [1,1,.45]);
+      addMesh(eye, new THREE.SphereGeometry(.17,26,18), materials.white, [0,0,0], [1.14,.72,.24]);
+      addMesh(eye, new THREE.SphereGeometry(.105,22,16), materials.iris, [0,-.012,.105], [.84,1.04,.3]);
+      addMesh(eye, new THREE.SphereGeometry(.05,18,12), materials.dark, [0,-.012,.155], [.86,1.05,.28]);
+      addMesh(eye, new THREE.SphereGeometry(.024,12,8), materials.white, [-.022,.036,.183], [1,1,.38]);
       return eye;
     };
-    const leftEye = buildEye(-.39);
-    const rightEye = buildEye(.39);
-    addMesh(head, new THREE.BoxGeometry(.24,.035,.025), materials.hair, [-.39,.51,.94], [1,1,.7], [0,0,-.08]);
-    addMesh(head, new THREE.BoxGeometry(.24,.035,.025), materials.hair, [.39,.51,.94], [1,1,.7], [0,0,.08]);
-    addMesh(head, new THREE.ConeGeometry(.065,.105,3), materials.catPink, [0,-.075,.96], [1,.7,.55], [0,0,Math.PI]);
-    addMesh(head, new THREE.TorusGeometry(.115,.018,7,24,Math.PI), materials.dark, [0,-.18,.93], [1,.74,.45], [0,0,Math.PI]);
-    addMesh(head, new THREE.SphereGeometry(.07,16,10), materials.catPink, [0,-.28,.935], [1.15,.62,.28]);
-    addMesh(head, new THREE.ConeGeometry(.04,.1,3), materials.white, [.105,-.22,.955], [1,1,.55], [0,0,Math.PI]);
+    const leftEye = buildEye(-.31);
+    const rightEye = buildEye(.31);
+    addMesh(head, new THREE.CapsuleGeometry(.016,.16,4,10), materials.hair, [-.31,.47,.81], [1,1,.55], [0,0,Math.PI / 2 - .1]);
+    addMesh(head, new THREE.CapsuleGeometry(.016,.16,4,10), materials.hair, [.31,.47,.81], [1,1,.55], [0,0,Math.PI / 2 + .1]);
+    addMesh(head, new THREE.SphereGeometry(.045,14,10), materials.skinShade, [0,.04,.84], [.75,1.1,.35]);
+    addMesh(head, new THREE.TorusGeometry(.105,.016,7,24,Math.PI), materials.dark, [0,-.14,.81], [1,.74,.42], [0,0,Math.PI]);
 
     const hair = new THREE.Group();
     head.add(hair);
-    addMesh(hair, new THREE.SphereGeometry(1.16,48,32), materials.hair, [0,.45,-.18], [1.08,1.02,.87]);
-    addMesh(hair, new THREE.ConeGeometry(.25,.58,9), materials.hair, [-.96,.78,-.06], [1,1,.68], [0,0,1.04]);
-    addMesh(hair, new THREE.ConeGeometry(.25,.58,9), materials.hair, [.96,.78,-.06], [1,1,.68], [0,0,-1.04]);
-    addMesh(hair, new THREE.ConeGeometry(.24,.56,9), materials.hairLight, [-.48,1.32,-.08], [1,1,.7], [0,0,.22]);
-    addMesh(hair, new THREE.ConeGeometry(.24,.56,9), materials.hair, [.42,1.34,-.08], [1,1,.7], [0,0,-.2]);
-    const sideLocks = [
-      [-.96,.18,.14,.36,.77,.55,.28],[.96,.18,.14,.36,.77,.55,-.28],
-      [-.84,-.18,.3,.28,.57,.42,.5],[.84,-.18,.3,.28,.57,.42,-.5],
-      [-.66,.91,.0,.48,.5,.55,-.42],[.68,.92,.0,.48,.5,.55,.42],
+    addMesh(hair, new THREE.SphereGeometry(.98,42,30), materials.hair, [0,.52,-.18], [1.04,.94,.87]);
+    const curls = [
+      [-.72,.92,.05,.34,.4,.5,-.34],[-.42,1.18,.02,.42,.4,.48,-.18],[-.08,1.29,-.01,.43,.39,.46,.08],
+      [.27,1.24,-.02,.42,.39,.47,.18],[.6,1.07,.0,.4,.42,.49,.32],[.82,.76,.02,.32,.48,.45,.28],
+      [-.86,.55,.02,.3,.5,.42,.18],[.9,.43,.03,.29,.52,.42,-.18],[-.75,.25,.18,.26,.45,.36,.32],[.77,.18,.2,.25,.45,.36,-.32],
     ];
-    sideLocks.forEach(([x,y,z,sx,sy,sz,rz], index) => addMesh(hair, new THREE.SphereGeometry(.7,26,18), index === 4 ? materials.hairLight : materials.hair, [x,y,z], [sx,sy,sz], [0,0,rz]));
+    curls.forEach(([x,y,z,sx,sy,sz,rz], index) => addMesh(hair, new THREE.SphereGeometry(.55,24,17), index === 2 || index === 5 ? materials.hairLight : materials.hair, [x,y,z], [sx,sy,sz], [0,0,rz]));
     const bangs = [
-      [-.59,.69,.92,.54,.7,-.22],[-.3,.74,.95,.58,.78,-.09],[.02,.76,.96,.6,.82,.04],[.34,.73,.95,.56,.76,.13],[.62,.68,.91,.52,.68,.23],
+      [-.53,.76,.72,.34,.48,-.28],[-.22,.87,.77,.39,.52,-.1],[.13,.87,.77,.38,.5,.1],[.46,.77,.72,.33,.46,.28],
     ];
-    bangs.forEach(([x,y,z,sx,sy,tilt], index) => addMesh(hair, new THREE.SphereGeometry(.52,26,18), index === 2 ? materials.hairLight : materials.hair, [x,y,z], [sx,sy,.18], [0,0,tilt]));
-    addMesh(hair, new THREE.ConeGeometry(.25,.72,6), materials.hair, [-.9,.52,.43], [1,1,.7], [0,0,Math.PI-.48]);
-    addMesh(hair, new THREE.ConeGeometry(.25,.72,6), materials.hair, [.9,.52,.43], [1,1,.7], [0,0,Math.PI+.48]);
+    bangs.forEach(([x,y,z,sx,sy,tilt], index) => addMesh(hair, new THREE.SphereGeometry(.48,24,17), index === 1 ? materials.hairLight : materials.hair, [x,y,z], [sx,sy,.16], [0,0,tilt]));
+    addMesh(hair, new THREE.ConeGeometry(.18,.5,7), materials.hair, [-.84,.78,.08], [1,1,.7], [0,0,1.05]);
+    addMesh(hair, new THREE.ConeGeometry(.16,.46,7), materials.hairLight, [.73,1.08,.02], [1,1,.7], [0,0,-.8]);
+    addMesh(hair, new THREE.ConeGeometry(.14,.38,7), materials.hair, [-.18,1.43,-.02], [1,1,.7], [0,0,-.25]);
 
     const cat = new THREE.Group();
-    cat.position.set(0,-1.08,.86);
+    cat.position.set(0,-1.04,.86);
     cat.rotation.y = .04;
     rig.add(cat);
-    addMesh(cat, new THREE.SphereGeometry(.5,32,24), materials.catLight, [0,-.34,0], [.78,1.06,.67]);
-    addMesh(cat, new THREE.SphereGeometry(.48,34,24), materials.catLight, [0,.24,.04], [1.02,.9,.76]);
-    addMesh(cat, new THREE.ConeGeometry(.21,.42,4), materials.cat, [-.28,.69,.02], [1,1,.72], [0,0,-.15]);
-    addMesh(cat, new THREE.ConeGeometry(.21,.42,4), materials.catDark, [.28,.69,.02], [1,1,.72], [0,0,.15]);
-    addMesh(cat, new THREE.ConeGeometry(.105,.25,4), materials.catPink, [-.28,.7,.08], [1,1,.72], [0,0,-.15]);
-    addMesh(cat, new THREE.ConeGeometry(.105,.25,4), materials.catPink, [.28,.7,.08], [1,1,.72], [0,0,.15]);
-    addMesh(cat, new THREE.SphereGeometry(.25,22,16), materials.cat, [-.27,.32,.33], [1.18,1.35,.32]);
-    addMesh(cat, new THREE.SphereGeometry(.19,20,14), materials.catDark, [.27,.36,.35], [1.05,1.22,.28]);
-    addMesh(cat, new THREE.TorusGeometry(.085,.014,6,18,Math.PI), materials.dark, [-.16,.22,.405], [1,.72,.45], [0,0,Math.PI]);
-    addMesh(cat, new THREE.TorusGeometry(.085,.014,6,18,Math.PI), materials.dark, [.16,.22,.405], [1,.72,.45], [0,0,Math.PI]);
-    addMesh(cat, new THREE.SphereGeometry(.14,18,12), materials.white, [-.1,.08,.39], [1.1,.72,.35]);
-    addMesh(cat, new THREE.SphereGeometry(.14,18,12), materials.white, [.1,.08,.39], [1.1,.72,.35]);
-    addMesh(cat, new THREE.ConeGeometry(.045,.075,3), materials.catPink, [0,.11,.45], [1,.7,.45], [0,0,Math.PI]);
-    addMesh(cat, new THREE.SphereGeometry(.07,16,10), materials.catPink, [0,-.04,.44], [1,.65,.3]);
-    addMesh(cat, new THREE.CapsuleGeometry(.105,.26,6,14), materials.catLight, [-.27,-.55,.32], [1,1,.8], [0,0,-.4]);
-    addMesh(cat, new THREE.CapsuleGeometry(.105,.26,6,14), materials.cat, [.27,-.55,.32], [1,1,.8], [0,0,.4]);
-    addMesh(cat, new THREE.SphereGeometry(.13,18,12), materials.catLight, [-.31,-.76,.37], [1.1,.78,.72]);
-    addMesh(cat, new THREE.SphereGeometry(.13,18,12), materials.cat, [.31,-.76,.37], [1.1,.78,.72]);
-    addMesh(cat, new THREE.SphereGeometry(.17,22,16), materials.skin, [-.43,-.39,.48], [1.08,.82,.72], [0,0,-.18]);
-    addMesh(cat, new THREE.SphereGeometry(.17,22,16), materials.skin, [.43,-.39,.48], [1.08,.82,.72], [0,0,.18]);
+    addMesh(cat, new THREE.SphereGeometry(.53,34,24), materials.catLight, [0,-.34,0], [.75,1.12,.66]);
+    addMesh(cat, new THREE.SphereGeometry(.38,28,20), materials.catCream, [0,-.42,.36], [.64,1,.18]);
+    addMesh(cat, new THREE.SphereGeometry(.28,24,18), materials.catLight, [-.29,-.56,.02], [1,.8,.74]);
+    addMesh(cat, new THREE.SphereGeometry(.28,24,18), materials.cat, [.29,-.56,.02], [1,.8,.74]);
+    addMesh(cat, new THREE.SphereGeometry(.47,36,26), materials.catLight, [0,.25,.05], [1.06,.88,.76]);
+    addMesh(cat, new THREE.SphereGeometry(.19,20,14), materials.catLight, [-.23,.13,.32], [1.05,.86,.48]);
+    addMesh(cat, new THREE.SphereGeometry(.19,20,14), materials.catLight, [.23,.13,.32], [1.05,.86,.48]);
+    addMesh(cat, new THREE.ConeGeometry(.2,.4,3), materials.cat, [-.29,.65,.03], [1,1,.78], [0,0,-.13]);
+    addMesh(cat, new THREE.ConeGeometry(.2,.4,3), materials.catDark, [.29,.65,.03], [1,1,.78], [0,0,.13]);
+    addMesh(cat, new THREE.ConeGeometry(.095,.23,3), materials.catPink, [-.29,.66,.1], [1,1,.7], [0,0,-.13]);
+    addMesh(cat, new THREE.ConeGeometry(.095,.23,3), materials.catPink, [.29,.66,.1], [1,1,.7], [0,0,.13]);
+    addMesh(cat, new THREE.SphereGeometry(.27,24,18), materials.cat, [-.25,.36,.3], [1.05,1.2,.3], [0,0,-.14]);
+    addMesh(cat, new THREE.SphereGeometry(.19,22,16), materials.catDark, [.3,.39,.32], [1,1.14,.28], [0,0,.12]);
+    addTube(cat, [[-.27,.22,.43],[-.17,.18,.46],[-.08,.2,.45]], .014, materials.dark, 12);
+    addTube(cat, [[.27,.22,.43],[.17,.18,.46],[.08,.2,.45]], .014, materials.dark, 12);
+    addMesh(cat, new THREE.SphereGeometry(.135,18,12), materials.catCream, [-.105,.08,.42], [1.08,.72,.34]);
+    addMesh(cat, new THREE.SphereGeometry(.135,18,12), materials.catCream, [.105,.08,.42], [1.08,.72,.34]);
+    addMesh(cat, new THREE.ConeGeometry(.042,.07,3), materials.catPink, [0,.115,.47], [1,.72,.5], [0,0,Math.PI]);
+    addMesh(cat, new THREE.TorusGeometry(.052,.011,6,18,Math.PI), materials.dark, [0,.01,.455], [1,.8,.45], [0,0,Math.PI]);
+    addMesh(cat, new THREE.SphereGeometry(.045,14,10), materials.catPink, [0,-.055,.46], [1.15,.58,.28]);
+    [[-.12,.08,.43,-.43,.04,.42],[-.12,.02,.43,-.45,-.04,.4],[-.12,-.04,.42,-.41,-.11,.38],
+     [.12,.08,.43,.43,.04,.42],[.12,.02,.43,.45,-.04,.4],[.12,-.04,.42,.41,-.11,.38]].forEach(([x1,y1,z1,x2,y2,z2]) =>
+      addTube(cat, [[x1,y1,z1],[(x1+x2)*.52,(y1+y2)*.52,z1+.012],[x2,y2,z2]], .0045, materials.dark, 10));
+    addMesh(cat, new THREE.CapsuleGeometry(.09,.28,6,14), materials.catLight, [-.21,-.34,.32], [1,1,.82], [0,0,-.1]);
+    addMesh(cat, new THREE.CapsuleGeometry(.09,.3,6,14), materials.cat, [.2,-.32,.32], [1,1,.82], [0,0,.23]);
+    addMesh(cat, new THREE.SphereGeometry(.12,18,12), materials.catLight, [-.23,-.53,.37], [1.18,.72,.76], [0,0,-.08]);
+    addMesh(cat, new THREE.SphereGeometry(.12,18,12), materials.cat, [.24,-.51,.37], [1.18,.72,.76], [0,0,.12]);
+    addMesh(cat, new THREE.SphereGeometry(.15,20,14), materials.catCream, [-.23,-.78,.34], [1.15,.72,.82], [0,0,-.08]);
+    addMesh(cat, new THREE.SphereGeometry(.15,20,14), materials.cat, [.25,-.75,.34], [1.15,.72,.82], [0,0,.1]);
     const tailPivot = new THREE.Group();
-    tailPivot.position.set(.32,-.48,-.06);
+    tailPivot.position.set(.3,-.52,-.05);
     cat.add(tailPivot);
-    const tailCurve = new THREE.CatmullRomCurve3([new THREE.Vector3(0,0,0),new THREE.Vector3(.5,.08,0),new THREE.Vector3(.68,.48,.08),new THREE.Vector3(.48,.76,.14)]);
-    addMesh(tailPivot, new THREE.TubeGeometry(tailCurve,28,.1,12,false), materials.catDark);
+    addTube(tailPivot, [[0,0,0],[.45,.04,.01],[.62,.37,.08],[.48,.69,.14],[.25,.74,.18]], .085, materials.catDark, 30);
 
     const dataCloud = new THREE.Group();
     rig.add(dataCloud);
@@ -456,12 +466,12 @@ function initAvatar() {
     window.addEventListener("resize", resize, { passive: true });
 
     const targets = {
-      hero: { x: .2, y: .05, scale: 1.03, ry: -.05, arm: -.67, head: 0 },
-      system: { x: .55, y: .02, scale: .97, ry: -.24, arm: -.7, head: -.06 },
-      work: { x: .98, y: -.03, scale: .88, ry: -.42, arm: -.73, head: -.1 },
-      journey: { x: .62, y: .02, scale: .96, ry: .16, arm: -.68, head: .07 },
-      beyond: { x: .86, y: -.05, scale: .9, ry: -.12, arm: -.7, head: -.04 },
-      contact: { x: .42, y: 0, scale: .95, ry: .26, arm: -.7, head: .08 },
+      hero: { x: .2, y: .05, scale: 1.03, ry: -.05, arm: 0, head: 0 },
+      system: { x: .55, y: .02, scale: .97, ry: -.24, arm: -.02, head: -.06 },
+      work: { x: .98, y: -.03, scale: .88, ry: -.42, arm: -.035, head: -.1 },
+      journey: { x: .62, y: .02, scale: .96, ry: .16, arm: .015, head: .07 },
+      beyond: { x: .86, y: -.05, scale: .9, ry: -.12, arm: -.015, head: -.04 },
+      contact: { x: .42, y: 0, scale: .95, ry: .26, arm: .02, head: .08 },
     };
 
     let accent = new THREE.Color(scenePalette.hero);
@@ -475,7 +485,7 @@ function initAvatar() {
       const mobileShift = window.innerWidth < 820 ? .5 : 0;
       const continuousTurn = state.paused ? 0 : (state.sceneProgress - .5) * .15;
       const projectTurn = state.project === "imu" ? -.08 : 0;
-      const projectArm = state.project === "muscle" ? -.08 : 0;
+      const projectArm = state.project === "muscle" ? -.018 : 0;
 
       rig.position.x = lerp(rig.position.x, target.x + mobileShift, .055);
       rig.position.y = lerp(rig.position.y, target.y + Math.sin(time * 1.25) * .035, .055);
@@ -492,7 +502,7 @@ function initAvatar() {
       rightHand.rotation.z = Math.sin(time * 1.4) * .025;
       leftArm.rotation.z = lerp(leftArm.rotation.z, -target.arm - projectArm, .065);
       tailPivot.rotation.z = Math.sin(time * 1.8) * .18;
-      cat.position.y = -1.08 + Math.sin(time * 1.1) * .014;
+      cat.position.y = -1.04 + Math.sin(time * 1.1) * .014;
       cat.rotation.y = .04 + Math.sin(time * .7) * .025;
       cat.rotation.z = Math.sin(time * .8) * .008;
       ring.rotation.z += state.paused ? 0 : delta * .22;

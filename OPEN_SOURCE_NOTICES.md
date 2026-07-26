@@ -21,3 +21,13 @@ browser APIs.
 
 These tools were used locally to produce the transparent football-player PNG.
 Neither the inference runtime nor model weights are shipped with the website.
+
+## Character-design references
+
+No third-party character mesh is shipped with this site. The procedural avatar
+uses original Three.js geometry, with anatomy and proportion studies informed by
+these CC0 reference libraries:
+
+- [Quaternius Universal Base Characters](https://quaternius.com/packs/universalbasecharacters.html) — CC0
+- [Quaternius Farm Animal Pack](https://quaternius.com/packs/farmanimal.html) — CC0
+- [OpenGameArt Simple Cat](https://opengameart.org/content/simple-cat) by drummyfish — CC0
